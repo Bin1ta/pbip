@@ -1,0 +1,57 @@
+<?php
+include_once("../../classes/application_top.php");
+$id=$_REQUEST['id'];
+
+$list=$obj->getDatainfoByOfc($id,PRO);
+
+?>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">प्रगति विवराण</h4>
+</div>
+<?php
+$dte=new DateTime($time_stamp);
+?>
+<div class="modal-body">
+<table class="table">
+   <thead>
+    <tr>
+      <th scope="col">S.N.</th>
+      <th scope="col">शिर्षक</th>
+      <th scope="col">अार्थिक वर्ष</th>
+      <th scope="col">Upload Date</th>
+     
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <?php 
+$a=1;
+    while($data=$list->fetch_assoc()){ 
+
+
+    	?>
+    <tr>
+      <th scope="row"><?php echo $a; ?></th>
+      <td><?php echo $data['title']; ?></td>
+         <td><?php echo $data['fy']; ?></td>
+      <td><?php echo $data['reg_date']; ?></td>
+     
+      <td>
+          <a class="btn btn-success" href="<?php echo $data['flink']; ?>" target="_blank"><i class="fa fa-eye"></i> </a> 
+                                                      <?php
+
+                                                      ?>
+                                                      <a class="btn btn-danger" href="del.php?nidad=<?php echo $data['id']; ?>&fn=<?php echo $data['flink']; ?>" onclick="return confirm(&quot;के तपाई यस विवरण खारेज गर्न चाहनुहुन्छ ? याद गर्नुहोस् एक पटक हटाइएको विवरण पुनः ल्याउन सकिने छैन ।&quot;)"><i class="fa fa-trash-o"></i></a>
+                                              
+
+
+      </td>
+    </tr>
+    <?php $a++; } ?>
+  </tbody>
+</table>
+
+</div>

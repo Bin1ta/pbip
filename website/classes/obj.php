@@ -1,0 +1,9 @@
+<?php
+$list=$obj->getSlide();
+$datad=$obj->getPageinfo('6','bt_page');
+$news=$obj->getNews();
+$glist=$obj->getMedia6();
+$vlist1=$obj->getVideo();
+$alist=$obj->getAlist('bt_albums');
+$vlist=$obj->getVideoall();
+?>
